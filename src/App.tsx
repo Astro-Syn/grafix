@@ -15,6 +15,7 @@ function App() {
   return (
     <Routes>
       <Route path="/" element={<ProtectedRoute><Dashboard/></ProtectedRoute>}/>
+      <Route path="/dashboard" element={<ProtectedRoute><Dashboard /></ProtectedRoute>} />
       <Route path="/board/:id" element={<ProtectedRoute><BoardPage/></ProtectedRoute>}/>
       <Route path='/login' element={<Login/>}/>
       <Route path='/signup' element={<Signup/>}/>
