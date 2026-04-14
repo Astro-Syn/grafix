@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { supabase } from '../../lib/supabase';
 import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 export default function Login(){
     const navigate = useNavigate();
@@ -55,6 +56,10 @@ export default function Login(){
 
         {error && <p style={{ color: 'red' }}>{error}</p>}
       </form>
+
+      <p>Don't have an account?
+        <Link to='/signup'>Signup</Link>
+      </p>
     </div>
   );
 }
