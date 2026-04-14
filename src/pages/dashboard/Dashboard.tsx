@@ -1,50 +1,69 @@
-import {useState, useEffect} from 'react';
-import { supabase } from '../../lib/supabase';
+import { useState, useEffect } from "react";
+import { supabase } from "../../lib/supabase";
+import { useNavigate } from "react-router-dom";
 
 type Board = {
-    id: string;
-    name: string;
-}
-
+  id: string;
+  name: string;
+};
 
 export default function Dashboard() {
-    const [boards, setBoards] = useState<Board[]>([]);
-    const [name, setName] = useState("");
+  const [boards, setBoards] = useState<Board[]>([]);
+  const [name, setName] = useState("");
+  const nav = useNavigate();
 
-    const fetchBoards = async () => {
-        const { data, error } =  await supabase
-        .from("boards")
-        .select("*")
-        .order("created_at", { ascending: false });
 
-        if (!error) setBoards(data || []);
+  const fetchBoards = async () => {
+    const { data, error } = await supabase
+      .from("boards")
+      .select("*")
+      .order("created_at", { ascending: false });
+
+    if (error) {
+      console.error("Error fetching boards:", error);
+      return;
     }
 
-    useEffect(() => {
-        fetchBoards();
-    }, []);
+    setBoards(data || []);
+  };
 
-    const createBoard = async () => {
-        const {
-            data: { user },
+  useEffect(() => {
+    fetchBoards();
+  }, []);
 
-        } = await supabase.auth.getUser();
+  
+  const createBoard = async () => {
+    if (!name.trim()) return; 
 
-        if (!user) return;
+    const {
+      data: { user },
+    } = await supabase.auth.getUser();
 
-        await supabase.from("boards").insert({
-            name, 
-            user_id: user.id,
-        })
+    if (!user) {
+      console.error("No user found");
+      return;
     }
 
-    return (
-    
-    <div>
+    const { error } = await supabase.from("boards").insert({
+      name,
+      user_id: user.id,
+    });
+
+    if (error) {
+      console.error("Error creating board:", error);
+      return;
+    }
+
+    setName("");        
+    fetchBoards();      
+  };
+
+  return (
+    <div style={{ padding: "20px" }}>
       <h1>My Inspo Boards</h1>
 
-      
-      <div>
+    
+      <div style={{ marginBottom: "20px" }}>
         <input
           placeholder="Board name..."
           value={name}
@@ -55,12 +74,26 @@ export default function Dashboard() {
 
     
       <div>
-        {boards.map((board) => (
-          <div key={board.id}>
-            {board.name}
-          </div>
-        ))}
+        {boards.length === 0 ? (
+          <p>No boards yet. Create one 👀</p>
+        ) : (
+          boards.map((board) => (
+            <div
+              key={board.id}
+              onClick={() => nav(`/board/${board.id}`)}
+              style={{
+                cursor: "pointer",
+                padding: "10px",
+                border: "1px solid white",
+                marginBottom: "10px",
+                borderRadius: "8px",
+              }}
+            >
+              {board.name}
+            </div>
+          ))
+        )}
       </div>
     </div>
-    )
+  );
 }
