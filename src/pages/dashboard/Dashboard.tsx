@@ -59,12 +59,15 @@ export default function Dashboard() {
     fetchBoards();      
   };
 
+  console.log('Dashboard rendered')
+
   return (
     <div style={{ padding: "20px" }}>
       <h1>My Inspo Boards</h1>
 
     
       <div style={{ marginBottom: "20px" }}>
+        <p>DASHBOARD WORKS</p>
         <input
           placeholder="Board name..."
           value={name}
