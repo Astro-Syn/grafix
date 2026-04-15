@@ -59,7 +59,40 @@ export default function Dashboard() {
     fetchBoards();      
   };
 
-  console.log('Dashboard rendered')
+
+  const deleteBoard = async (id: string) => {
+  const { error } = await supabase
+    .from("boards")
+    .delete()
+    .eq("id", id);
+
+  if (error) {
+    console.error(error);
+    return;
+  }
+
+  
+  setBoards((prev) => prev.filter((b) => b.id !== id));
+};
+
+const renameBoard = async (id: string, newName: string) => {
+  const { error } = await supabase
+    .from("boards")
+    .update({ name: newName })
+    .eq("id", id);
+
+  if (error) {
+    console.error(error);
+    return;
+  }
+
+  
+  setBoards((prev) =>
+    prev.map((b) =>
+      b.id === id ? { ...b, name: newName } : b
+    )
+  );
+};
 
   return (
     <div style={{ padding: "20px" }}>
@@ -79,7 +112,7 @@ export default function Dashboard() {
     
       <div>
         {boards.length === 0 ? (
-          <p>No boards yet. Create one 👀</p>
+          <p>No boards yet. Create one! </p>
         ) : (
           boards.map((board) => (
             <div
@@ -93,7 +126,24 @@ export default function Dashboard() {
                 borderRadius: "8px",
               }}
             >
-              {board.name}
+              <span>{board.name}</span>
+
+                <button onClick={(e) => {
+                  e.stopPropagation();
+      const newName = prompt("Enter new board name:");
+      if (newName) {
+        renameBoard(board.id, newName);
+      }
+    }}>
+      Rename
+    </button>
+
+    <button onClick={(e) => {
+      e.stopPropagation();
+      deleteBoard(board.id)
+    }}>
+      Delete
+    </button>
             </div>
           ))
         )}
