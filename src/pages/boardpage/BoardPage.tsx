@@ -12,6 +12,7 @@ export default function BoardPage() {
   const { id } = useParams();
   const [pins, setPins] = useState<Pin[]>([]);
   const [imageUrl, setImageUrl] = useState("");
+  const [boardName, setBoardName] = useState("");
 
   const fetchPins = async () => {
     const { data, error } = await supabase
@@ -23,9 +24,24 @@ export default function BoardPage() {
     if (!error) setPins(data || []);
   };
 
+    const fetchBoard = async () => {
+  if (!id) return;
+
+  const { data, error } = await supabase
+    .from("boards")
+    .select("name")
+    .eq("id", id)
+    .single();
+
+  if (!error && data) {
+    setBoardName(data.name);
+  }
+};
+
   useEffect(() => {
     fetchPins();
-  }, []);
+    fetchBoard();
+  }, [id]);
 
   const addPin = async () => {
     const {
@@ -41,16 +57,20 @@ export default function BoardPage() {
     });
 
     setImageUrl("");
+    
     fetchPins();
   };
 
+
+
   return (
     <div className='board-wrapper'>
-      <h1>Board</h1>
+      <h1>Your <span className='board-name-text'>{boardName}</span> Board</h1>
 
       
-      <div>
+      <div className='board-upload-wrapper'>
         <input
+          className='board-input-container'
           placeholder="Paste image URL..."
           value={imageUrl}
           onChange={(e) => setImageUrl(e.target.value)}
