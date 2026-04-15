@@ -11,12 +11,13 @@
 .nav-button-wrapper {
     display: flex;
     flex-direction: row;
-    background: red;
     width: 100%;
 }
 
 .nav-button-wrapper p {
-    background: blue;
+    font-family: "Geo";
+    font-size: 1.1em;
+    letter-spacing: 1px;
 }
 
 .nav-button-wrapper a {

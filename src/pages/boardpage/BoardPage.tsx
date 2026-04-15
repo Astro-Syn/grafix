@@ -1,6 +1,7 @@
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { supabase } from "../../lib/supabase";
+import './BoardPage.css';
 
 type Pin = {
   id: string;
@@ -44,7 +45,7 @@ export default function BoardPage() {
   };
 
   return (
-    <div>
+    <div className='board-wrapper'>
       <h1>Board</h1>
 
       
@@ -58,7 +59,7 @@ export default function BoardPage() {
       </div>
 
       
-      <div style={{ display: "flex", flexWrap: "wrap", gap: "10px" }}>
+      <div className='board-content' >
         {pins.map((pin) => (
           <img
             key={pin.id}
