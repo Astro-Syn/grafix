@@ -1,6 +1,7 @@
 import LogoutButton from "../logout-btn/LogoutButton";
 import { useAuth } from "../../context/AuthContext";
 import "./Navbar.css";
+import Navbar2 from "../navbar2/Navbar2";
 
 export default function Navbar() {
     const { user } = useAuth();
@@ -13,6 +14,8 @@ export default function Navbar() {
              <h2 className='title'>Grafix</h2>
                 <p>Create your own inspiration</p>
             </div>
+
+            <Navbar2 />
            
             <div>
                 {user && (

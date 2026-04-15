@@ -1,0 +1,9 @@
+.navbar2-wrapper {
+    position: fixed;
+    top: 50%;
+    margin: 0;
+    left: 0;
+    width: 10vw;
+    height: 10vh;
+    background: red;
+}
