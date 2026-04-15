@@ -7,12 +7,17 @@ export default function Navbar() {
 
     return (
         <nav className='nav-wrapper'>
-            <h2>Grafix</h2>
+            <span>Git Link</span>
 
+            <div className='main-words-container'>
+             <h2 className='title'>Grafix</h2>
+                <p>Create your own inspiration</p>
+            </div>
+           
             <div>
                 {user && (
                     <>
-                    <span>
+                    <span className='user-email'>
                     {user.email}
                     </span>
                     <LogoutButton/>

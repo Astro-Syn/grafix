@@ -1,5 +1,57 @@
+:root {
+    --title-txt: rgb(202, 202, 202);
+    --main-txt-dm: rgb(182, 182, 182);
+    --dark-bg: rgb(12, 12, 12);
+}
+
 .nav-wrapper {
-    background: orange;
-    width: 100%;
+    display: flex;
+    padding: 0.5em;
+    justify-content: space-between;
+    align-items: center;
+    background: var(--dark-bg);
+    width: 100vw;
     height: 5%;
+    color: var(--main-txt-dm);
+    
+}
+
+.main-words-container {
+    margin-top: 1em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.main-words-container p {
+    font-family: "Geo";
+    font-size: 1.2em;
+    letter-spacing: 1px;
+}
+
+.title {
+    font-family: "Offside";
+    font-size: 4em;
+    color: var(--title-txt);
+    font-weight: 100;
+    background: linear-gradient( rgb(208, 255, 214), white);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    display: inline-block;
+    border-bottom: 1px solid white;
+    letter-spacing: 6px;
+    line-height: 1.5;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+h2 {
+    margin: 0;
+}
+
+.user-email {
+    font-family: "Geo";
 }
