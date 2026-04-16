@@ -2,6 +2,8 @@ import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { supabase } from "../../lib/supabase";
 import './BoardPage.css';
+import { RiImageAddFill } from "react-icons/ri";
+import { TbFileSad } from "react-icons/tb";
 
 type Pin = {
   id: string;
@@ -22,7 +24,22 @@ export default function BoardPage() {
       .order("created_at", { ascending: false });
 
     if (!error) setPins(data || []);
+
+    
   };
+
+  const deletePosts = async (id: string) => {
+    const { error } = await supabase
+    .from("pins").delete()
+    .eq("id", id);
+
+    if (error) {
+      console.error(error);
+      return;
+    }
+
+    fetchPins();
+  }
 
     const fetchBoard = async () => {
   if (!id) return;
@@ -65,6 +82,7 @@ export default function BoardPage() {
 
   return (
     <div className='board-wrapper'>
+      
       <h1>Your <span className='board-name-text'>{boardName}</span> Board</h1>
 
       
@@ -75,25 +93,49 @@ export default function BoardPage() {
           value={imageUrl}
           onChange={(e) => setImageUrl(e.target.value)}
         />
-        <button onClick={addPin}>Add</button>
+        <button 
+        className='add-pic-btn'
+        onClick={addPin}>
+          <RiImageAddFill color={'white'} size={30}/>
+        </button>
       </div>
 
       <div className='board-content-wrapper-main'>
         <div className='board-content-wrapper'>
-
         
-        <div className='board-content' >
-        {pins.map((pin) => (
-          <img
-            key={pin.id}
-            src={pin.image_url}
-            style={{ width: "200px", borderRadius: "10px" }}
-          />
-        ))}
+        
+       <div className='board-content'>
+        <div className='side-boardName-deco'>{boardName}</div>
+  {pins.length === 0 ? (
+    <p className="empty-board-text">
+      There’s no posts for this board yet 
+      <TbFileSad color={'white'} size={40}/>
+    </p>
+  ) : (
+    pins.map((pin) => (
+      <div key={pin.id} className="pin-container">
+        <img
+          src={pin.image_url}
+          style={{ width: "200px", borderRadius: "10px" }}
+        />
+
+        <button
+          className='delete-post-btn'
+          onClick={(e) => {
+            e.stopPropagation();
+            deletePosts(pin.id);
+          }}
+        >
+          Remove
+        </button>
       </div>
+    ))
+  )}
+</div>
+
       </div>
 
-        <div className='board-content-bottom'></div>
+       
       </div>
       
     </div>
