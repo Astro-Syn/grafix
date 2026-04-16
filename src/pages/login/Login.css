@@ -1,0 +1,33 @@
+body {
+    background: black;
+    color: white;
+}
+
+
+
+.login-btn-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.397);
+    width: 6.5em;
+    height: 2em;
+    padding: 0.3em;
+    clip-path: polygon(100% 0, 100% 78%, 91% 100%, 0 100%, 0 0);
+}
+
+
+.login-btn {
+    position: absolute;
+    color: white;
+    background: black;
+    padding: 0.5em;
+    padding-right: 1.9em;
+    padding-left: 1.9em;
+    border: none;
+    font-family: "Geo";
+    letter-spacing: 1px;
+    font-size: 1.1em;
+    clip-path: polygon(100% 0, 100% 78%, 91% 100%, 0 100%, 0 0);
+}

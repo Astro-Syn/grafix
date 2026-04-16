@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { supabase } from '../../lib/supabase';
 import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
+import './Login.css';
 
 export default function Login(){
     const navigate = useNavigate();
@@ -50,9 +51,14 @@ export default function Login(){
           onChange={(e) => setPassword(e.target.value)}
         />
 
-        <button type="submit" disabled={loading}>
+      <div className='login-btn-wrapper'>
+        <button 
+        className='login-btn'
+        type="submit" disabled={loading}>
           {loading ? 'Logging in...' : 'Login'}
         </button>
+      </div>
+        
 
         {error && <p style={{ color: 'red' }}>{error}</p>}
       </form>
