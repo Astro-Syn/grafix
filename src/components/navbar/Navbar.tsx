@@ -17,7 +17,7 @@ export default function Navbar() {
 
             <Navbar2 />
            
-            <div>
+            <div className='user-logout-wrapper'>
                 {user && (
                     <>
                     <span className='user-email'>
