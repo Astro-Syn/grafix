@@ -33,39 +33,47 @@ export default function Login(){
         navigate('/dashboard');
     }
     }
-    return (
-    <div style={{ maxWidth: 400, margin: '100px auto' }}>
-      <h1>Login</h1>
+return (
+  <div className="login-page">
+    <div className="login-card">
+      <h1 className="login-title">Access Terminal</h1>
 
-      <form onSubmit={handleLogin}>
-        <input
-          placeholder="Email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />
+      <form onSubmit={handleLogin} className="login-form">
+        <div className="input-wrapper">
+          <input
+            placeholder="Email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
+        </div>
 
-        <input
-          placeholder="Password"
-          type="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
+        <div className="input-wrapper">
+          <input
+            placeholder="Password"
+            type="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+        </div>
 
-      <div className='login-btn-wrapper'>
-        <button 
-        className='login-btn'
-        type="submit" disabled={loading}>
-          {loading ? 'Logging in...' : 'Login'}
-        </button>
-      </div>
-        
+        <div className='login-btn-wrapper'>
+          <button 
+            className='login-btn'
+            type="submit" 
+            disabled={loading}
+          >
+            {loading ? 'Logging...' : 'Login'}
+          </button>
+        </div>
 
-        {error && <p style={{ color: 'red' }}>{error}</p>}
+        {error && <p className="error-text">{error}</p>}
       </form>
 
-      <p>Don't have an account?
-        <Link to='/signup'>Signup</Link>
+      <p className="signup-text">
+        Don’t have an account? 
+        <Link to='/signup'> Sign up</Link>
       </p>
     </div>
-  );
+  </div>
+);
 }

@@ -31,3 +31,132 @@ body {
     font-size: 1.1em;
     clip-path: polygon(100% 0, 100% 78%, 91% 100%, 0 100%, 0 0);
 }
+
+body {
+    background: black;
+    color: white;
+    margin: 0;
+}
+
+
+.login-page {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.login-card {
+    width: 350px;
+    padding: 2em;
+    background: rgba(0, 0, 0, 0.8);
+    border-radius: 16px;
+    backdrop-filter: blur(10px);
+    position: relative;
+    overflow: hidden;
+}
+
+
+.login-card::before {
+    content: "";
+    position: absolute;
+    inset: -2px;
+    border-radius: 18px;
+    background: linear-gradient(120deg, #00ff88, #8a2be2, #00ff88);
+    background-size: 300% 300%;
+    filter: blur(10px);
+    opacity: 0.6;
+    z-index: 0;
+    animation: glowMove 6s linear infinite;
+}
+
+.login-card::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.9);
+    border-radius: 16px;
+    z-index: 1;
+}
+
+
+.login-card * {
+    position: relative;
+    z-index: 2;
+}
+
+
+.login-title {
+    text-align: center;
+    margin-bottom: 1.5em;
+    font-weight: 200;
+    letter-spacing: 2px;
+}
+
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2em;
+}
+
+
+.input-wrapper {
+    position: relative;
+}
+
+
+.input-wrapper input {
+    width: 100%;
+    padding: 0.8em;
+    background: rgba(0, 0, 0, 0.8);
+    border: none;
+    color: white;
+    font-family: "Geo";
+    letter-spacing: 1px;
+    border-radius: 8px;
+}
+
+
+.input-wrapper::before {
+    content: "";
+    position: absolute;
+    inset: -2px;
+    border-radius: 10px;
+    background: linear-gradient(120deg, #00ff88, #8a2be2);
+    opacity: 0;
+    transition: 0.3s;
+    z-index: 0;
+}
+
+.input-wrapper:focus-within::before {
+    opacity: 1;
+    filter: blur(6px);
+}
+
+
+.error-text {
+    color: #ff4d4d;
+    font-size: 0.9em;
+    text-align: center;
+}
+
+
+.signup-text {
+    margin-top: 1.5em;
+    text-align: center;
+    color: rgba(255,255,255,0.6);
+}
+
+.signup-text a {
+    color: #00ff88;
+    text-decoration: none;
+}
+
+
+@keyframes glowMove {
+    0% { background-position: 0% 50%; }
+    100% { background-position: 300% 50%; }
+}
