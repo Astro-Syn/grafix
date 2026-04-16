@@ -78,8 +78,11 @@ export default function BoardPage() {
         <button onClick={addPin}>Add</button>
       </div>
 
-      
-      <div className='board-content' >
+      <div className='board-content-wrapper-main'>
+        <div className='board-content-wrapper'>
+
+        
+        <div className='board-content' >
         {pins.map((pin) => (
           <img
             key={pin.id}
@@ -88,6 +91,11 @@ export default function BoardPage() {
           />
         ))}
       </div>
+      </div>
+
+        <div className='board-content-bottom'></div>
+      </div>
+      
     </div>
   );
 }
