@@ -1,0 +1,20 @@
+.success-text {
+    color: #00ff88;
+    font-size: 0.9em;
+    text-align: center;
+}
+
+.login-btn-wrapper.signup {
+    width: 7.5em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex-wrap: nowrap;
+    white-space: nowrap;
+}
+
+.login-btn.signup {
+    margin-top: 1em;
+    margin-bottom: 1em;
+    
+}

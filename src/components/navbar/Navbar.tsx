@@ -10,10 +10,7 @@ export default function Navbar() {
         <nav className='nav-wrapper'>
             <span>Git Link</span>
 
-            <div className='main-words-container'>
-             <h2 className='title'>Grafix</h2>
-                <p>Create your own inspiration</p>
-            </div>
+           
 
             <Navbar2 />
            

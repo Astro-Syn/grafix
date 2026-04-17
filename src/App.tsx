@@ -6,6 +6,7 @@ import Signup from "./pages/signup/Signup";
 import ProtectedRoute from "./components/ProtectedRoute";
 import './App.css';
 import Layout from "./components/layout/Layout";
+import LayoutStart from "./components/layout/layout-start/LayoutStart";
 
 
 
@@ -38,8 +39,20 @@ function App() {
           <BoardPage/>
           </Layout>
           </ProtectedRoute>}/>
-      <Route path='/login' element={<Login/>}/>
-      <Route path='/signup' element={<Signup/>}/>
+
+
+      <Route path='/login' element={
+        <LayoutStart>
+          <Login/>
+        </LayoutStart>
+        
+        }/>
+      <Route path='/signup' element={
+        <LayoutStart>
+          <Signup/>
+        </LayoutStart>
+        
+        }/>
       
     </Routes>
   )

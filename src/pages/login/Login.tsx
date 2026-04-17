@@ -36,7 +36,7 @@ export default function Login(){
 return (
   <div className="login-page">
     <div className="login-card">
-      <h1 className="login-title">Access Terminal</h1>
+      <h1 className="login-title">Login</h1>
 
       <form onSubmit={handleLogin} className="login-form">
         <div className="input-wrapper">

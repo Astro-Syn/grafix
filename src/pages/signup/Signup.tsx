@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { supabase } from '../../lib/supabase';
 import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
+import "./Signup.css";
 
 export default function Signup() {
   const navigate = useNavigate();
@@ -42,35 +43,48 @@ export default function Signup() {
     }
   };
 
-  return (
-    <div style={{ maxWidth: 400, margin: '100px auto' }}>
-      <h1>Sign Up</h1>
+return (
+  <div className="login-page">
+    <div className="login-card">
+      <h1 className="login-title">Create Account</h1>
 
-      <form onSubmit={handleSignup}>
-        <input
-          placeholder="Email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />
+      <form onSubmit={handleSignup} className="login-form">
+        <div className="input-wrapper">
+          <input
+            placeholder="Email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
+        </div>
 
-        <input
-          placeholder="Password"
-          type="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
+        <div className="input-wrapper">
+          <input
+            placeholder="Password"
+            type="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+        </div>
 
-        <button type="submit" disabled={loading}>
-          {loading ? 'Creating account...' : 'Sign Up'}
-        </button>
+        <div className='login-btn-wrapper signup'>
+          <button 
+            className='login-btn signup'
+            type="submit" 
+            disabled={loading}
+          >
+            {loading ? 'Creating...' : 'Sign Up'}
+          </button>
+        </div>
 
-        {error && <p style={{ color: 'red' }}>{error}</p>}
-        {message && <p style={{ color: 'green' }}>{message}</p>}
+        {error && <p className="error-text">{error}</p>}
+        {message && <p className="success-text">{message}</p>}
       </form>
 
-      <p>
-        Already have an account? <Link to='/login'>Login</Link>
+      <p className="signup-text">
+        Already have an account?
+        <Link to='/login'> Login</Link>
       </p>
     </div>
-  );
+  </div>
+);
 }

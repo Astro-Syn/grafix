@@ -63,21 +63,19 @@ body {
     content: "";
     position: absolute;
     inset: -2px;
-    border-radius: 18px;
     background: linear-gradient(120deg, #00ff88, #8a2be2, #00ff88);
     background-size: 300% 300%;
     filter: blur(10px);
     opacity: 0.6;
     z-index: 0;
-    animation: glowMove 6s linear infinite;
+    animation: glowMove 9s linear infinite;
 }
 
 .login-card::after {
     content: "";
     position: absolute;
     inset: 0;
-    background: rgba(0, 0, 0, 0.9);
-    border-radius: 16px;
+    background: radial-gradient(rgba(0, 0, 0, 0.767),black, black);
     z-index: 1;
 }
 
@@ -111,20 +109,26 @@ body {
 .input-wrapper input {
     width: 100%;
     padding: 0.8em;
-    background: rgba(0, 0, 0, 0.8);
-    border: none;
+    background: rgba(0, 0, 0, 0.85);
+    border: 1px solid rgba(255, 255, 255, 0.1);
     color: white;
     font-family: "Geo";
     letter-spacing: 1px;
-    border-radius: 8px;
+
+    transition: border 0.2s ease, box-shadow 0.2s ease;
 }
 
+.input-wrapper input:focus {
+    outline: none;
+    border: 1px solid rgba(0, 255, 136, 0.4);
+    box-shadow: 0 0 6px rgba(0, 255, 136, 0.2);
+    background: black;
+}
 
 .input-wrapper::before {
     content: "";
     position: absolute;
-    inset: -2px;
-    border-radius: 10px;
+    inset: 0px;
     background: linear-gradient(120deg, #00ff88, #8a2be2);
     opacity: 0;
     transition: 0.3s;
