@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { supabase } from "../../lib/supabase";
 import { useNavigate } from "react-router-dom";
+import "./Dashboard.css";
 
 
 type Board = {
@@ -95,12 +96,12 @@ const renameBoard = async (id: string, newName: string) => {
 };
 
   return (
-    <div style={{ padding: "20px" }}>
-      <h1>My Inspo Boards</h1>
+    <div className='dashboard-wrapper'>
+      <h1 className='dashboard-title'>My Graphix Boards</h1>
 
     
       <div style={{ marginBottom: "20px" }}>
-        <p>DASHBOARD WORKS</p>
+        
         <input
           placeholder="Board name..."
           value={name}
@@ -116,18 +117,16 @@ const renameBoard = async (id: string, newName: string) => {
         ) : (
           boards.map((board) => (
             <div
+            className='board-holder'
               key={board.id}
               onClick={() => nav(`/board/${board.id}`)}
-              style={{
-                cursor: "pointer",
-                padding: "10px",
-                border: "1px solid white",
-                marginBottom: "10px",
-                borderRadius: "8px",
-              }}
             >
               <span>{board.name}</span>
 
+              <div className="dashboard-btn-container">
+
+
+              
                 <button onClick={(e) => {
                   e.stopPropagation();
       const newName = prompt("Enter new board name:");
@@ -144,6 +143,7 @@ const renameBoard = async (id: string, newName: string) => {
     }}>
       Delete
     </button>
+    </div>
             </div>
           ))
         )}
