@@ -8,7 +8,7 @@ export default function Navbar() {
 
     return (
         <nav className='nav-wrapper'>
-            <span>Git Link</span>
+            
 
            
 

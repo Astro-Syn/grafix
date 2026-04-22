@@ -11,60 +11,59 @@
 
 .board-content-wrapper-main {
     position: relative;
-    width: 70%;
-    height: 70%;
+    width: clamp(700px, 70vw, 1600px);
+    aspect-ratio: 16 / 10;
+    overflow: hidden;
+    height: auto;
     padding: 1em;
-
+    background: red;
 }
 
 .board-content-wrapper {
     position: relative;
     width: 100%;
-    height: 90%;
+    height: 100%;
     inset: 0;
-    padding: 2em;
-    background: white;
     padding: 2px;
-    clip-path: polygon(50% 0%, 61% 8%, 100% 8%, 100% 81%, 85% 89%, 8% 90%, 0 100%, 0% 70%, 0% 35%, 0 0);
+    background: white;
+clip-path: polygon(0 71%, 0 53%, 0 11%, 6% 0, 100% 0, 100% 10%, 100% 100%, 60% 100%, 55% 96%, 49% 96%, 44% 100%, 0 100%);
     z-index: 2;
 }
 
-
 .board-content {
     background: black;
-     inset: 0;
-     height: 90%;
+    inset: 0;
+    height: 100%;
     display: grid;
     padding: 2em;
     padding-bottom: 1.9em;
-    clip-path: polygon(50% 0%, 61% 8%, 100% 8%, 100% 81%, 85% 89%, 8% 90%, 0 100%, 0% 70%, 0% 35%, 0 0);
+  clip-path: polygon(0 71%, 0 53%, 0 11%, 6% 0, 100% 0, 100% 10%, 100% 100%, 60% 100%, 55% 96%, 49% 96%, 44% 100%, 0 100%);
 }
-
-
 
 .board-wrapper h1 {
     color: white;
 }
 
 .board-name-text {
-     -webkit-text-stroke: 0.2px aquamarine;
-     color: black;
-     font-size: 2em;
-     letter-spacing: 1px;
+    -webkit-text-stroke: 0.2px aquamarine;
+    color: black;
+    font-size: 2em;
+    letter-spacing: 1px;
 }
 
 .board-upload-wrapper {
     position: relative;
-    margin-bottom: 1em;
-    width: 50%;
+    right: 0;
+    top: 0;
+    margin: 1em;
+    width: 70%;
     height: 4em;
     display: flex;
     justify-content: center;
     align-items: center;
     margin: 1em;
-    border: 1px solid rgba(255, 255, 255, 0.63);
+    border: 2px solid rgba(255, 255, 255, 0.63);
     background: rgba(0, 0, 0, 0.808);
-   
     overflow: hidden;
 }
 
@@ -72,19 +71,16 @@
     content: "";
     position: absolute;
     inset: -2px;
-    
     background: linear-gradient(
         120deg,
         #e4fff39c,
         #2bcde2ad,
         #006336e1
     );
-
     background-size: 300% 300%;
     filter: blur(8px);
     opacity: 0;
     transition: opacity 0.3s ease;
-
     z-index: 0;
 }
 
@@ -125,7 +121,6 @@
     border: none;
     padding: 1em;
     background: rgba(0, 0, 0, 0.548);
-    
 }
 
 .empty-board-text {
@@ -135,7 +130,6 @@
     color: white;
     font-family: "Geo";
     font-size: 1.5em;
-    
 }
 
 .side-boardName-deco {

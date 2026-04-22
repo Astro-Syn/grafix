@@ -6,13 +6,13 @@ import { Link } from "react-router-dom";
 export default function Navbar2() {
     return (
         <div className='navbar2-wrapper'>
-            
-            <div className='nav-button-wrapper'>
-            <Link to={'/dashboard'}>
-            <LuClipboard color={'white'} size={50}/>
-            <p> My Boards</p>
-            </Link>
-            </div>
+            <h2>Grafix</h2>
+           <div className="nav-button-wrapper">
+  <Link to="/dashboard">
+    <LuClipboard size={28} />
+    <p>My Boards</p>
+  </Link>
+</div>
         </div>
     )
 }

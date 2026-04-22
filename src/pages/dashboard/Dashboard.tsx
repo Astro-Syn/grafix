@@ -97,7 +97,7 @@ const renameBoard = async (id: string, newName: string) => {
 
   return (
     <div className='dashboard-wrapper'>
-      <h1 className='dashboard-title'>My Graphix Boards</h1>
+      <h1 className='dashboard-title'>My Grafix Boards</h1>
 
     
       <div style={{ marginBottom: "20px" }}>
